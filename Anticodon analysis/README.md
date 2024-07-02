@@ -1,3 +1,18 @@
+# Utilidade
+A partir de uma lista de pastas contendo anotações gênicas, esse algorítmo retorna uma tabela
+Cada linha da tabela informa:
+- Nome da pasta de origem da anotação
+- Nome do gene
+- Códon que inicia a sequência
+- Anticódon (que finaliza)
+
+Exemplo: 
+Pygocentrus_nattereri,ATPase8,ATG,TAA
+Pygocentrus_nattereri,ATPase6,CTA,T--
+Pygocentrus_nattereri,COXIII,ATG,---
+
+Cada "-" representa um aminoácido que foi perdido no anticódon
+
 # Requisito
 - Você vai precisar fazer as anotações para suas espécies usando o MitoFish Annotator
 - O MitoAnnotator gera uma pasta para cada espécie anotada
