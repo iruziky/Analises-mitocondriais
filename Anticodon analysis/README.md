@@ -1,0 +1,2 @@
+No arquivo "Caminho da pasta.txt", insira o caminho completo para a pasta em que estão inseridas pastas para cada espécie anotada
+OBS: Se estiver usando Windows, utilize o seguinte formato: C:\\<Caminho>\\<...>\\<Nome da pasta>
