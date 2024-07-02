@@ -6,12 +6,10 @@ Cada linha da tabela informa:
 - Códon que inicia a sequência
 - Anticódon (que finaliza)
 
-Exemplo: 
-Pygocentrus_nattereri,ATPase8,ATG,TAA
-
-Pygocentrus_nattereri,ATPase6,CTA,T--
-
-Pygocentrus_nattereri,COXIII,ATG,---
+Exemplo:</br>
+Pygocentrus_nattereri,ATPase8,ATG,TAA</br>
+Pygocentrus_nattereri,ATPase6,CTA,T--</br>
+Pygocentrus_nattereri,COXIII,ATG,---</br>
 
 Cada "-" representa um aminoácido que foi perdido no anticódon
 
