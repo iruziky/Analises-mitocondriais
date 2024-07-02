@@ -8,7 +8,9 @@ Cada linha da tabela informa:
 
 Exemplo: 
 Pygocentrus_nattereri,ATPase8,ATG,TAA
+
 Pygocentrus_nattereri,ATPase6,CTA,T--
+
 Pygocentrus_nattereri,COXIII,ATG,---
 
 Cada "-" representa um aminoácido que foi perdido no anticódon
