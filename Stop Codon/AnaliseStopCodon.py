@@ -38,7 +38,7 @@ def getStopCodon(geneCleam):
     return stopCodon
 
 def writerLog(text):
-    with open('StopCodon Analysis\\logAnaliseCodons.txt', 'a') as file:
+    with open('Stop Codon\\logAnaliseCodons.txt', 'a') as file:
         file.write(text)
 
 
