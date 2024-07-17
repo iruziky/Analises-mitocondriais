@@ -13,6 +13,11 @@ def run_automation(fasta_path, driver):
     forward_primers, reverse_primers = get_primer_results(driver)
     forward_index, reverse_index = get_index_results(driver)
 
+    forward_primers = extract_text(forward_primers)
+    reverse_primers = extract_text(reverse_primers)
+    forward_index = extract_text(forward_index)
+    reverse_index = extract_text(reverse_index)
+
     return forward_primers, reverse_primers, forward_index, reverse_index
 
 def set_primer_parameters(driver):
@@ -80,3 +85,9 @@ def get_index_results(driver):
     reverse_index = driver.find_elements("xpath", reverse_index_xpaths)
 
     return forward_index, reverse_index
+
+def extract_text(elements):
+    result = list()
+    for element in elements:
+        result.append(element.text)
+    return result
