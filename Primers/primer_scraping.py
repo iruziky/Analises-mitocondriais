@@ -2,13 +2,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 
-import sys
+import log
 
 def run_automation(fasta_path, driver):
     set_primer_parameters(driver)
-    upload_fasta_file(fasta_path, driver)
+
+    if not upload_fasta_file(fasta_path, driver):
+        return 0, 0, 0, 0
+    
     run_primer_search(driver)
-    wait_for_element_appear(driver)
+    
+    if not wait_for_element_appear(driver):
+        return 0, 0, 0, 0
 
     forward_primers, reverse_primers = get_primer_results(driver)
     forward_index, reverse_index = get_index_results(driver)
@@ -40,10 +45,10 @@ def upload_fasta_file(fasta_path, driver):
 
     try:
         choose_file_button.send_keys(fasta_path)
-
     except Exception as e:
-        print("Ocorreu um erro ao inserir o arquivo\n", "Encerrando a execução\n", "Error: ", e)
-        sys.exit()
+        log.writerLog("Ocorreu um erro ao inserir o arquivo\nError: {e}")
+        return 0
+    return 1
 
 def run_primer_search(driver):
     get_primers_button_xpath = '//*[@id="searchForm"]/div[3]/div[1]/input'
@@ -60,13 +65,15 @@ def wait_for_element_appear(driver):
         wait.until(EC.presence_of_element_located(("xpath", element_waited_xpath)))
 
     except TimeoutException:
-        print("Uma execução do blast demorou mais de 10 minutos e está sendo encerrada.\n", "Tente novamente mais tarde.\n")
+        log.writerLog("Uma execução do blast demorou mais de 10 minutos e está sendo encerrada.\nTente novamente mais tarde.\n")
         # É possível os dados inseridos estejam incorretos. Neste caso, essa exceção será acionada, mas não deveria
-        sys.exit()
+        return 0
         
     except Exception as e:
-        print("Ocorreu um erro:", str(e))
-        sys.exit()
+        log.writerLog(f"Ocorreu um erro: {e}\n")
+        return 0
+
+    return 1
 
 def get_primer_results(driver):
     forward_primers_xpaths = '//*[@id="alignments"]/div/table/tbody/tr[2]/td[1]'

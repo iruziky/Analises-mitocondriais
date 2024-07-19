@@ -1,9 +1,9 @@
-import os
+import log
 import sys
 
 def default_warning():
-    print("ATENÇÃO: Caso seus arquivos fastas possuam mais de uma contig, este programa irá sobrescrevê-los resultando em arquivos contendo apenas sua primeira contig\n",
-          "É ALTAMENTE recomendado que antes de executar este programa, você realize um backup de seus fastas\n")
+    print("\nATENÇÃO: Caso seus arquivos fasta possuam mais de uma contig, este programa irá sobrescrevê-los, resultando em arquivos contendo apenas sua primeira contig\n",
+          "É INDISPENSÁVEL realizar um backup de seus fastas antes de executar este programa\n")
     response = input('Digite "sim" para confirmar:\n>> ')
     if not response == "sim":
         print("Encerrando a execução\n")
@@ -18,8 +18,8 @@ def verify_quantity_contigs(fasta_path):
     if count_contigs > 2:
         return 0
     elif count_contigs < 2:
-        print(f"O arquivo fasta {fasta_path} não possui nenhuma contig")
-        sys.exit()
+        log.writerLog(f"O arquivo fasta {fasta_path} não possui nenhuma contig\n")
+        return -1
     return 1
 
 def get_first_contig(fasta_path):
